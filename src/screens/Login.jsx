@@ -4,6 +4,7 @@ import globalStyles from '../assets/globalStyles';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import {Link} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Login = () => {
   return (
@@ -30,6 +31,20 @@ const Login = () => {
       <View>
         <Button>Log In</Button>
       </View>
+      <View style={styles.formAlternative}>
+        <Text>or sign in with</Text>
+        <View style={styles.formAlternativeIcons}>
+          <View style={styles.borderAlternativeIcons}>
+            <Icon size={35} name="google" color="grey" />
+          </View>
+          <View style={styles.borderAlternativeIcons}>
+            <Icon size={35} name="facebook" color="blue" />
+          </View>
+          <View style={styles.borderAlternativeIcons}>
+            <Icon size={35} name="fingerprint" color="orange" />
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
@@ -48,6 +63,23 @@ const styles = StyleSheet.create({
   },
   formGap: {
     gap: 15,
+  },
+  formAlternative: {
+    alignItems: 'center',
+    gap: 15,
+  },
+  formAlternativeIcons: {
+    flexDirection: 'row',
+    gap: 15,
+  },
+  borderAlternativeIcons: {
+    width: 95,
+    height: 52,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#E14D2A',
+    borderRadius: 5,
   },
 });
 
