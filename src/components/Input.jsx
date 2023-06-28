@@ -20,8 +20,8 @@ const Input = ({secureTextEntry, ...rest}) => {
       {secureTextEntry && (
         <>
           <TouchableOpacity onPress={() => setVisibility(!visible)}>
-            {visible && <Icon size={20} color="grey" name="eye-off" />}
-            {!visible && <Icon size={20} color="grey" name="eye" />}
+            {visible && <Icon size={20} color="#E14D2A" name="eye-off" />}
+            {!visible && <Icon size={20} color="#E14D2A" name="eye" />}
           </TouchableOpacity>
         </>
       )}
