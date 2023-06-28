@@ -5,8 +5,14 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import {Link} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useDispatch} from 'react-redux/es/exports';
+import {login} from '../redux/reducers/auth';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const doLogin = () => {
+    dispatch(login('abc'));
+  };
   return (
     <View style={styles.wrapper}>
       <View style={styles.heading}>
@@ -29,7 +35,7 @@ const Login = () => {
         </View>
       </View>
       <View>
-        <Button>Log In</Button>
+        <Button onPress={doLogin}>Log In</Button>
       </View>
       <View style={styles.formAlternative}>
         <Text>or sign in with</Text>
