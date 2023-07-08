@@ -3,31 +3,28 @@ import React from 'react';
 import globalStyles from '../assets/globalStyles';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import {Link} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
-import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {useDispatch, useSelector} from 'react-redux';
-import {asyncRegister} from '../redux/actions/auth';
+import {asyncResetPassword} from '../redux/actions/auth';
+import * as Yup from 'yup';
 import {clearMessage} from '../redux/reducers/auth';
 import Alert from '../components/alert';
 
 const validationSchema = Yup.object({
-  fullName: Yup.string().required('Full Name cannot be empty'),
-  email: Yup.string().email('Invalid email address').required('Required'),
-  password: Yup.string().required('Password cannot be empty'),
-  confirmPassword: Yup.string().required('Confirm password cannot be empty'),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('email cannot be empty'),
 });
 
-const Regsiter = () => {
-  const dispatch = useDispatch();
+const ResetPassword = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const successMessage = useSelector(state => state.auth.successMessage);
   const errorMessage = useSelector(state => state.auth.errorMessage);
 
-  const doRegister = values => {
-    dispatch(asyncRegister(values));
+  const doReset = values => {
+    dispatch(asyncResetPassword(values));
   };
 
   if (successMessage) {
@@ -40,56 +37,55 @@ const Regsiter = () => {
     <View style={styles.wrapper}>
       <View style={styles.heading}>
         <View>
-          <Text style={globalStyles.title}>Sign Up</Text>
+          <Text style={globalStyles.title}>Reset Password</Text>
         </View>
         <View>
           <Text style={globalStyles.subTitle}>
-            Already have an account?
-            <Link style={globalStyles.link} to="/Login">
-              Log In
-            </Link>
+            Input code to reset your password!
           </Text>
         </View>
       </View>
       <Formik
         initialValues={{
-          fullName: '',
+          code: '',
           email: '',
           password: '',
           confirmPassword: '',
         }}
         validationSchema={validationSchema}
-        onSubmit={doRegister}>
+        onSubmit={doReset}>
         {({
           handleBlur,
-          handleChange,
           handleSubmit,
-          setFieldValue,
+          handleChange,
           values,
-          touched,
           errors,
+          touched,
         }) => (
           <>
             <View style={styles.formGap}>
               {errorMessage && <Alert variant="error">{errorMessage}</Alert>}
-              <Input
-                placeholder="Full Name"
-                onBlur={handleBlur('fullName')}
-                onChangeText={handleChange('fullName')}
-                value={values.fullName}
-              />
-              {errors.email && touched.email && (
-                <Text style={globalStyles.textError}>{errors.email}</Text>
+              {successMessage && (
+                <Alert variant="success">{successMessage}</Alert>
               )}
               <Input
-                placeholder="Email"
-                keyboardType="email-address"
-                onBlur={handleBlur('email')}
+                onChangeText={handleChange('code')}
+                onBlur={handleBlur('code')}
+                placeholder="Enter your code"
+                value={values.code}
+              />
+              {errors.code && touched.code && (
+                <Text style={styles.textErrorMessage}>{errors.code}</Text>
+              )}
+              <Input
                 onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                placeholder="Enter your email"
+                keyboardType="email-address"
                 value={values.email}
               />
               {errors.email && touched.email && (
-                <Text style={globalStyles.textError}>{errors.email}</Text>
+                <Text style={styles.textErrorMessage}>{errors.email}</Text>
               )}
               <Input
                 placeholder="Enter your password"
@@ -98,9 +94,6 @@ const Regsiter = () => {
                 onChangeText={handleChange('password')}
                 value={values.password}
               />
-              {errors.password && touched.password && (
-                <Text style={globalStyles.textError}>{errors.password}</Text>
-              )}
               <Input
                 placeholder="Confirm your password"
                 secureTextEntry
@@ -108,19 +101,12 @@ const Regsiter = () => {
                 onChangeText={handleChange('confirmPassword')}
                 value={values.confirmPassword}
               />
-              {errors.password && touched.password && (
-                <Text style={globalStyles.textError}>{errors.password}</Text>
-              )}
-              <View style={styles.formCheck}>
-                <Icon name="square" size={20} color="grey" />
-                <Text>Accept terms and condition</Text>
-              </View>
             </View>
             <View>
               <Button
                 disabled={!touched.email && !touched.password}
                 onPress={handleSubmit}>
-                Sign Up
+                Send
               </Button>
             </View>
           </>
@@ -136,17 +122,26 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     gap: 50,
   },
-  heading: {
-    gap: 15,
+  alignRight: {
+    alignItems: 'flex-end',
   },
-  formCheck: {
-    marginTop: 15,
-    flexDirection: 'row',
-    gap: 15,
+  heading: {
+    gap: 10,
   },
   formGap: {
     gap: 15,
   },
+  formAlternative: {
+    alignItems: 'center',
+    gap: 15,
+  },
+  formAlternativeIcons: {
+    flexDirection: 'row',
+    gap: 15,
+  },
+  textErrorMessage: {
+    color: 'red',
+  },
 });
 
-export default Regsiter;
+export default ResetPassword;

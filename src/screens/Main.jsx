@@ -8,6 +8,7 @@ import Regsiter from './Regsiter';
 import Login from './Login';
 import ForgotPassword from './ForgotPassword';
 import {useSelector} from 'react-redux';
+import ResetPassword from './ResetPassword';
 
 const AuthStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ const Main = () => {
           <AuthStack.Screen name="Register" component={Regsiter} />
           <AuthStack.Screen name="Login" component={Login} />
           <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
+          <AuthStack.Screen name="ResetPassword" component={ResetPassword} />
         </AuthStack.Navigator>
       )}
       {token && (

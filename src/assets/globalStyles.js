@@ -9,6 +9,12 @@ const globalStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 15,
   },
+  btnDisabled: {
+    backgroundColor: '#bebfc2',
+  },
+  btnDisabledText: {
+    color: '#6b6c6e',
+  },
   btnText: {
     color: 'white',
     fontSize: 16,
@@ -38,6 +44,9 @@ const globalStyles = StyleSheet.create({
   },
   link: {
     color: '#E14D2A',
+  },
+  textError: {
+    color: '#FF0000',
   },
 });
 
