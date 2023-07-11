@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "198031161161",
+    "project_id": "onceticket-app-450ff",
+    "storage_bucket": "onceticket-app-450ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198031161161:android:a0d0e4c1d7925ab6844c98",
+        "android_client_info": {
+          "package_name": "com.nativeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198031161161-m64eaq0nqtuk4k4dlss5j5nfsuc391r2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPj93t_3x53XjwNAHFhwhCf7BZL4Kdu7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198031161161-m64eaq0nqtuk4k4dlss5j5nfsuc391r2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
