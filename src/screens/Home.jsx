@@ -11,6 +11,7 @@ import {useNavigation} from '@react-navigation/native';
 import {logout as logoutAction} from '../redux/reducers/auth';
 import {useDispatch} from 'react-redux';
 import Button from '../components/Button';
+import SplashScreen from 'react-native-splash-screen';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -20,6 +21,10 @@ const Home = () => {
     dispatch(logoutAction());
     // navigation.navigate('Login');
   };
+
+  React.useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <ScrollView style={style.wrapper}>
