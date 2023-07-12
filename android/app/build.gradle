@@ -74,9 +74,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.nativeproject"
+    namespace "net.ardanaz.onceticket"
     defaultConfig {
-        applicationId "com.nativeproject"
+        applicationId "net.ardanaz.onceticket"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
