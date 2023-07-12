@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {asyncRegister} from '../redux/actions/auth';
 import {clearMessage} from '../redux/reducers/auth';
 import Alert from '../components/alert';
+import SplashScreen from 'react-native-splash-screen';
 
 const validationSchema = Yup.object({
   fullName: Yup.string().required('Full Name cannot be empty'),
@@ -36,6 +37,11 @@ const Regsiter = () => {
       navigation.replace('Login');
     }, 1500);
   }
+
+  React.useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.heading}>
