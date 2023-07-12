@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:198031161161:android:a0d0e4c1d7925ab6844c98",
+        "mobilesdk_app_id": "1:198031161161:android:78cd28f93dc543f3844c98",
         "android_client_info": {
-          "package_name": "com.nativeproject"
+          "package_name": "net.ardanaz.onceticket"
         }
       },
       "oauth_client": [

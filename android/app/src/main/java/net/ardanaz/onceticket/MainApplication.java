@@ -1,4 +1,4 @@
-package com.nativeproject;
+package net.ardanaz.onceticket;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
