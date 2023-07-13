@@ -9,9 +9,11 @@ import Login from './Login';
 import ForgotPassword from './ForgotPassword';
 import {useSelector} from 'react-redux';
 import ResetPassword from './ResetPassword';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const AuthStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const Main = () => {
   const token = useSelector(state => state.auth.token);
@@ -27,10 +29,10 @@ const Main = () => {
         </AuthStack.Navigator>
       )}
       {token && (
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Profile" component={Profile} />
-        </Stack.Navigator>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="Profile" component={Profile} />
+        </Drawer.Navigator>
       )}
     </NavigationContainer>
   );
