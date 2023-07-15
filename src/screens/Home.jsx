@@ -9,13 +9,24 @@ import {
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {logout as logoutAction} from '../redux/reducers/auth';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Button from '../components/Button';
 import SplashScreen from 'react-native-splash-screen';
+import http from '../helpers/http';
 
 const Home = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const deviceToken = useSelector(state => state.deviceToken.data);
+  const token = useSelector(state => state.auth.token);
+  const saveToken = React.useCallback(async () => {
+    const form = new URLSearchParams({token: deviceToken.token});
+    await http(token).post('/device-token', form.toString());
+  }, [deviceToken, token]);
+
+  React.useEffect(() => {
+    saveToken();
+  }, [saveToken]);
 
   const doLogout = () => {
     dispatch(logoutAction());
