@@ -10,6 +10,7 @@ import {Formik} from 'formik';
 import {asyncLogin} from '../redux/actions/auth';
 import Alert from '../components/alert';
 import * as Yup from 'yup';
+import {BACKEND_URL} from '@env';
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -22,6 +23,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const errorMessage = useSelector(state => state.auth.errorMessage);
   const doLogin = values => {
+    console.log(BACKEND_URL);
     dispatch(asyncLogin(values));
   };
   return (
